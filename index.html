@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Russekort Redirect</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #5a0000, #a80000, #ff1a1a);
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(0,0,0,0.25);
+      border: 2px solid rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 35px 25px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      line-height: 1.5;
+    }
+
+    .countdown {
+      font-size: 5rem;
+      font-weight: bold;
+      margin: 25px 0;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255,255,255,0.5);
+      animation: pulse 1s infinite;
+    }
+
+    .small {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      opacity: 0.75;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.08);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .emoji {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .countdown {
+        font-size: 4rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="emoji">🚨</div>
+
+    <h1>Russekort Loading...</h1>
+
+    <p>
+      Du blir sendt videre til noe tilfeldig om:
+    </p>
+
+    <div class="countdown" id="countdown">5</div>
+
+    <p class="small">
+      Lykke til 😈
+    </p>
+  </div>
+
+  <script>
+    // LEGG TIL URL-ER HER
+    const urls = [
+      "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "https://pointerpointer.com/",
+      "https://cat-bounce.com/",
+      "https://www.youtube.com/watch?v=xvFZjo5PgG0"
+    ];
+
+    let timeLeft = 5;
+    const countdownElement = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      timeLeft--;
+      countdownElement.textContent = timeLeft;
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+
+        // Velger tilfeldig URL
+        const randomUrl = urls[Math.floor(Math.random() * urls.length)];
+
+        // Sender brukeren videre
+        window.location.href = randomUrl;
+      }
+    }, 1000);
+  </script>
+
+</body>
+</html>
